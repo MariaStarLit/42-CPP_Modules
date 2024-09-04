@@ -6,7 +6,7 @@
 /*   By: mde-avel <mde-avel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 22:08:20 by mde-avel          #+#    #+#             */
-/*   Updated: 2024/05/11 22:19:59 by mde-avel         ###   ########.fr       */
+/*   Updated: 2024/09/02 20:11:38 by mde-avel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ WrongCat::~WrongCat()
 
 void	WrongCat::makeSound() const
 {
-	std::cout << CYAN << this->type << ": " << RESET << "Oink Oink" << std::endl;
+	std::cout << CYAN << this->type << ": " << RESET << "Woof Woof" << std::endl;
 }

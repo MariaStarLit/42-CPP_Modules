@@ -6,7 +6,7 @@
 /*   By: mde-avel <mde-avel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:15:31 by mde-avel          #+#    #+#             */
-/*   Updated: 2024/05/12 05:19:02 by mde-avel         ###   ########.fr       */
+/*   Updated: 2024/08/16 17:42:36 by mde-avel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ Cat::Cat() : Animal("Cat")
 Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	std::cout << CYAN << "Cat copy constructor called" << RESET << std::endl;
-	this->_brian = new Brain(*copy._brian);
+	this->_brian = NULL;
+	*this = copy;
 }
 
 Cat &Cat::operator=(const Cat &copy) 
