@@ -36,16 +36,17 @@ void	RPN::calculate(std::string exp)
 	}
 	while (skipspace >> input)
 	{
-		if (atoi(input.c_str()) >= 0 && atoi(input.c_str()) <= 9)
-			result = atoi(input.c_str());
 		//std::cout << "|" << input << "|" << std::endl;
 		if (atoi(input.c_str()) < 0 || atoi(input.c_str()) > 9)
 		{
 			std::cout << RED << "Error! Invalid number needs to be from 0 to 9." << RESET<< std::endl;
 			return ;
 		}
-		if ((std::isdigit(input[0])))
+		if ((input.length() == 1 && std::isdigit(input[0])) && (atoi(input.c_str()) >= 0 && atoi(input.c_str()) <= 9))
+		{
 			pile_n.push(input[0] - 48);
+			result = atoi(input.c_str());
+		}
 		else if (input.length() == 1 && op.find(input[0]) != std::string::npos)
 		{
 			if (pile_n.size() < 2)
