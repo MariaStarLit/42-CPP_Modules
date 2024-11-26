@@ -53,7 +53,7 @@ void	PmergeMe::makePairList(void)
 		if (a_second == inputList.end())
 			break;
 		
-		if (*a_first > *a_second)
+		if (*a_first < *a_second)
 			std::iter_swap(a_first, a_second);
 		aList.push_back(*a_first);
 		bList.push_back(*a_second);
@@ -71,7 +71,7 @@ bool	PmergeMe::isAListSorted(void)
 	{
 		if (a_second == aList.end())
 				break;
-		if (*a_first < *a_second)
+		if (*a_first > *a_second)
 			return (false);
 	}
 	return (true);
@@ -92,7 +92,7 @@ void	PmergeMe::sortPairList(void)
 		{
 			if (a_second == aList.end())
 				break;
-			if (*a_first < *a_second)
+			if (*a_first > *a_second)
 			{
 				std::iter_swap(a_first, a_second);
 				std::iter_swap(b_first, b_second);
@@ -122,7 +122,7 @@ std::list<int>::iterator PmergeMe::getPositionList(int nbr)
 	std::list<int>::iterator it;
 	for (it = aList.begin(); it != aList.end(); ++it)
 	{
-		if (*it < nbr)
+		if (*it > nbr)
 			return(it);
 	}
 	return(aList.end());
@@ -166,7 +166,6 @@ void	PmergeMe::insertBList()
 void	PmergeMe::sortList(void)
 {
 	std::list<int>::iterator			it;
-	std::list<int>::reverse_iterator	rit;
 	std::clock_t						list_start, list_end;
 	double								list_time;
 
@@ -183,8 +182,8 @@ void	PmergeMe::sortList(void)
 	list_time = static_cast<double>(list_end - list_start) / CLOCKS_PER_SEC;
 
 	// std::cout << CYAN << "After:  " << RESET;
-	// for(rit = this->aList.rbegin(); rit != this->aList.rend(); rit++)
-	// 	std::cout << *rit << " ";
+	// for(it = this->aList.begin(); it != this->aList.end(); it++)
+	// 	std::cout << *it << " ";
 	// std::cout << std::endl;
 
 	std::cout << CYAN << "Time to process a range of " << this->inputList.size() 
@@ -201,7 +200,7 @@ bool	PmergeMe::isSortedList(void)
 	{
 		if (a_second == aList.end())
 				break;
-		if (*a_first < *a_second)
+		if (*a_first > *a_second)
 		{
 			std::cout << RED << "False" << RESET << std::endl;
 			return (false);
@@ -227,7 +226,7 @@ void	PmergeMe::makePairVector(void)
 		if ((it + 1) == inputVec.end())
 			break;
 		
-		if (*it > *(it + 1))
+		if (*it < *(it + 1))
 			std::iter_swap(it, it + 1);
 		aVec.push_back(*it);
 		bVec.push_back(*(it + 1));
@@ -241,7 +240,7 @@ bool	PmergeMe::isAVectorSorted(void)
 	{
 		if ((iter + 1) == aVec.end())
 				break;
-		if (*iter < *(iter + 1))
+		if (*iter > *(iter + 1))
 			return (false);
 	}
 	return (true);
@@ -259,7 +258,7 @@ void	PmergeMe::sortPairVector(void)
 		{
 			if ((a_it + 1) == aVec.end())
 				break;
-			if (*a_it < *(a_it + 1))
+			if (*a_it > *(a_it + 1))
 			{
 				std::iter_swap(a_it, a_it + 1);
 				std::iter_swap(b_it, b_it + 1);
@@ -287,7 +286,7 @@ std::vector<int>::iterator PmergeMe::getPositionVector(int nbr)
 	std::vector<int>::iterator it;
 	for (it = aVec.begin(); it != aVec.end(); ++it)
 	{
-		if (*it < nbr)
+		if (*it > nbr)
 			return(it);
 	}
 	return(aVec.end());
@@ -322,7 +321,6 @@ void	PmergeMe::insertBVector()
 void	PmergeMe::sortVector(void)
 {
 	std::vector<int>::iterator			it;
-	std::vector<int>::reverse_iterator	rit;
 	std::clock_t						vec_start, vec_end;
 	double								vec_time;
 
@@ -339,8 +337,8 @@ void	PmergeMe::sortVector(void)
 	vec_time = static_cast<double>(vec_end - vec_start) / CLOCKS_PER_SEC;
 
 	std::cout << PURPLE << "After:  " << RESET;
-	for(rit = this->aVec.rbegin(); rit != this->aVec.rend(); rit++)
-		std::cout << *rit << " ";
+	for(it = this->aVec.begin(); it != this->aVec.end(); it++)
+		std::cout << *it << " ";
 	std::cout << std::endl;
 
 	std::cout << PURPLE << "Time to process a range of " << this->inputVec.size() 
@@ -356,7 +354,7 @@ bool	PmergeMe::isSortedVector(void)
 	{
 		if ((iter + 1) == aVec.end())
 				break;
-		if (*iter < *(iter + 1))
+		if (*iter > *(iter + 1))
 		{
 			std::cout << RED << "False" << RESET << std::endl;
 			return (false);
